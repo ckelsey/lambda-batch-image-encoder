@@ -4,7 +4,7 @@ const ERROR = require('./error')
 const executeQuery = require('./executeQuery')
 const parseResults = require('./parseResults')
 const encodeImage = require('./encodeImage')
-const sourceS3Bucket = process.env.S3_BUCKET || `https://s3.amazonaws.com/swgf.nvidia.com/`
+const sourceS3Bucket = process.env.S3_BUCKET
 const encoder = process.env.ENCODER
 let connection
 let imageOptions = {}
