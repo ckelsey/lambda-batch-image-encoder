@@ -10,8 +10,8 @@ LAMBDA SETUP
     * RDS_HOST: The host for database
     * RDS_USER: The username for the database
     * RDS_PASSWORD: The password for the database
-- The function must be created with a role that has the ability to invoke the ncoder Lambda function, sample policy below replacing <region>, <account number>, and <function name>:
-- {"Version":"2012-10-17","Statement":[{"Action":["lambda:InvokeFunction"],"Effect":"Allow","Resource":"arn:aws:lambda:<region>:<account number>:<function name>"}]}
+- The function must be created with a role that has the ability to invoke the ncoder Lambda function, sample policy below replacing (region), (account number), and (function name):
+- {"Version":"2012-10-17","Statement":[{"Action":["lambda:InvokeFunction"],"Effect":"Allow","Resource":"arn:aws:lambda:(region):(account number):(function name)"}]}
 - Timeout should be set to maximum (5min)
 - Handler should be set to index.handler
 - Runtime should be set to Node.js 8.10
