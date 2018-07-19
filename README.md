@@ -49,5 +49,5 @@ To build for Lambda after initial build if nothing has changed with node_modules
 
 GULP TASKS
 -------------------------------
-gulp - Starts up a pm2 server. Also watches files and reloads
-gulp build - Moves files from ./src to ./env/linux/src, removes any unnecessary files, and zips up into a lambda package
+- gulp - Starts up a pm2 server. Also watches files and reloads
+- gulp build - Moves files from ./src to ./env/linux/src, removes any unnecessary files, and zips up into a lambda package
