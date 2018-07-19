@@ -67,7 +67,7 @@ gulp.task('moveFiles', function (done) {
 gulp.task('devServer', function (done) {
     pm2.connect(true, function () {
         pm2.start({
-            name: 'lambdaImageEncoder',
+            name: 'lambdabatchimageencoder',
             script: path.resolve(__dirname, 'src', 'app.js')
         }, function () {
             console.log('pm2 started')
@@ -81,7 +81,7 @@ gulp.task('devServer', function (done) {
 // reload the server
 gulp.task('reload', function (done){
     try{
-        pm2.reload(`lambdaImageEncoder`)
+        pm2.reload(`lambdabatchimageencoder`)
     }catch(error){}
     done()
 })
@@ -89,7 +89,7 @@ gulp.task('reload', function (done){
 // BUILDS FOR LAMBDA
 gulp.task("build", function (done) {
     moveFiles().then(()=>{
-        exec(`cd ${path.resolve(__dirname, 'env', 'linux', 'src')} && rm imageencode.zip`, function (err, stdout, stderr) {
+        exec(`cd ${path.resolve(__dirname, 'env', 'linux', 'src')} && rm batchimageencode.zip`, function (err, stdout, stderr) {
             if (err){
                 console.log(err)
             }
@@ -98,7 +98,7 @@ gulp.task("build", function (done) {
                 console.log(stderr)
             }
 
-            exec(`cd ${path.resolve(__dirname, 'env', 'linux', 'src')} && find . -type f ! -name "*.*" -delete && zip -r imageencode.zip .`, function (err, stdout, stderr) {
+            exec(`cd ${path.resolve(__dirname, 'env', 'linux', 'src')} && find . -type f ! -name "*.*" -delete && zip -r batchimageencode.zip .`, function (err, stdout, stderr) {
                 if (err) {
                     console.log(err)
                 }
