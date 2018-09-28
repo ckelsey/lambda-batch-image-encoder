@@ -2,6 +2,7 @@ const path = require('path')
 const ERROR = require('./error')
 
 module.exports = (res, imageOptions, sourceS3Bucket)=> {
+    
     try {
         if (!res || !Array.isArray(res) || !res.length) {
             return Promise.reject(`Invalid DB images response ${ERROR(res)}`)
@@ -26,7 +27,7 @@ module.exports = (res, imageOptions, sourceS3Bucket)=> {
 
             switch (image.type) {
                 case `Original`:
-                    results[image.image_id].imageUrl = `${sourceS3Bucket}${image.path}`
+                    results[image.image_id].imageUrl = `https://s3.amazonaws.com/${sourceS3Bucket}/${image.path}`
                     break
                 case `low resolution`:
                     settings = JSON.parse(JSON.stringify(imageOptions.large))
@@ -35,10 +36,10 @@ module.exports = (res, imageOptions, sourceS3Bucket)=> {
                     settings = JSON.parse(JSON.stringify(imageOptions.preview))
                     break
                 case `thumbnail`:
-                    settings = JSON.parse(JSON.stringify(imageOptions.thumb))
+                    settings = JSON.parse(JSON.stringify(imageOptions.thumbnail))
                     break
                 case `customthumbnail`:
-                    settings = JSON.parse(JSON.stringify(imageOptions.thumb))
+                    settings = JSON.parse(JSON.stringify(imageOptions.thumbnail))
                     break
             }
 

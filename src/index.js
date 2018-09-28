@@ -1,4 +1,3 @@
-
 const mysql = require('mysql')
 const ERROR = require('./error')
 const executeQuery = require('./executeQuery')
@@ -123,13 +122,13 @@ function handler(event, context, callback) {
             .then(_results => {
 
                 results = _results
-                // databaseUpdates = results.databaseUpdate
+                databaseUpdates = results.databaseUpdate
 
-                // if (results.databaseUpdate){
-                //     for (let d in results.databaseUpdate) {
-                //         updateDbRecord(results.databaseUpdate[d])
-                //     }
-                // }
+                if (results.databaseUpdate){
+                    for (let d in results.databaseUpdate) {
+                        updateDbRecord(results.databaseUpdate[d])
+                    }
+                }
 
                 for (let i in results.results) {
                     if (results.results[i]) {
